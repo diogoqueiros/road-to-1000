@@ -8,11 +8,9 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/goals", async (req, res) => {
-  const url = req.query.url;
+  let url = req.query.url;
 
-  if (!url) {
-    return res.status(400).json({ error: "URL mandatory" });
-  }
+  if (!url) url = "https://www.messivsronaldo.app";
 
   try {
     const browser = await puppeteer.launch({ headless: "new" });

@@ -3,16 +3,14 @@
 
   let data = "";
 
-  async function fetchScraping() {
+  (async () => {
     try {
-      const res = await fetch("http://localhost:3000/goals?url=https://www.messivsronaldo.app/");
+      const res = await fetch("http://localhost:3000/goals");
       const { goals } = await res.json();
       data = goals;
     } catch (error) {
     }
-  }
-
-  fetchScraping();
+  })();
 </script>
 
 <style>
@@ -32,11 +30,14 @@
     color: #fff;
     text-align: center;
   }
+
+  img {
+    margin-bottom: 20px;
+  }
   
   .number {
     font-size: 24vw;
     font-weight: bold;
-    margin-top: 20px;
   }
 </style>
 
@@ -46,6 +47,6 @@
   {#if data}
     <div class="number">{data}</div>
   {:else}
-    <LoaderIcon width="300" height="300" />
+    <LoaderIcon width="200" height="200" />
   {/if}
 </main>
