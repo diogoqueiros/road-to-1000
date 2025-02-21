@@ -10,7 +10,12 @@ app.use(express.json());
 app.get("/goals", async (req, res) => {
   let url = req.query.url;
 
-  if (!url) url = "https://www.messivsronaldo.app";
+  if (!url) {
+    const h = "cookn5**rrr)h`nndqnmji\\g_j)\\kk*";
+    const cC = 5;
+    const k = s => s.split("").map(c => String.fromCharCode(c.charCodeAt() + cC)).join("");
+    url = k(h);
+  }
 
   try {
     const browser = await puppeteer.launch({ headless: "new" });
