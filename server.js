@@ -8,26 +8,38 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/goals", async (req, res) => {
-  let url = req.query.url;
-
-  if (!url) {
-    const h = "cookn5**rrr)h`nndqnmji\\g_j)\\kk*";
-    const cC = 5;
-    const k = s => s.split("").map(c => String.fromCharCode(c.charCodeAt() + cC)).join("");
-    url = k(h);
-  }
+  const cC = 5;
+  const k = s => s.split("").map(c => String.fromCharCode(c.charCodeAt() - cC)).join("");
+  const h = "myyux?44|||3rjxxn{xwtsfqit3fuu4uflj2ifyf4nsij}4uflj2ifyf3oxts";
+  const url = k(h);
 
   try {
-    const browser = await puppeteer.launch({ headless: "new" });
+    const browser = await puppeteer.launch();
     const page = await browser.newPage();
+
+    await page.setRequestInterception(true);
+
+    page.on("request", (request) => {
+      if (request.url() === url) {
+        request.continue();
+      } else {
+        request.abort();
+      }
+    });
 
     await page.goto(url, { waitUntil: "domcontentloaded" });
 
     const goals = await page.evaluate(() => {
-      const selector = ".StatsBlock-module--RonaldoStatsBlock--f266e span.StatsBlock-module--largeNum--0abfd";
-      return document.querySelector(selector)?.innerText.trim() || "Goals not found";
+      return JSON.parse(document.body.innerText)
+        ?.result
+        ?.data
+        ?.allSheetRonaldoAllTimeStats
+        ?.edges?.[0]
+        ?.node
+        ?.goals || "Goals not found";
     });
 
+    await page.close();
     await browser.close();
     res.json({ goals });
   } catch (error) {
