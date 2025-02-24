@@ -57,6 +57,6 @@
   {#if data}
     <div class="number">{data}</div>
   {:else}
-    <LoaderIcon width={200} height={200} />
+    <LoaderIcon className="icon" width={200} height={200} />
   {/if}
 </main>
