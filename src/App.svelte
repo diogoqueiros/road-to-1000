@@ -39,6 +39,16 @@
     font-size: 24vw;
     font-weight: bold;
   }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(359deg); }
+  }
+
+  :global(.icon) {
+    animation: spin 2s linear infinite;
+		
+	}
 </style>
 
 <main>

@@ -13,7 +13,7 @@ app.get("/goals", async (req, res) => {
     const h = "myyux?44|||3rjxxn{xwtsfqit3fuu4uflj2ifyf4nsij}4uflj2ifyf3oxts";
 
     const response = await fetch(k(h));
-    const json = await response.json()
+    const json = await response.json();
     res.json({
       goals: json?.[k("wjxzqy")]?.[k("ifyf")]?.[k("fqqXmjjyWtsfqitFqqYnrjXyfyx")]?.[k("jiljx")]?.[0]?.[k("stij")]?.[k("ltfqx")],
     });
