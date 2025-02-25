@@ -1,11 +1,12 @@
 <script lang="ts">
-  import LoaderIcon from "../public/assets/icons/Loader.svelte";
+  import LoaderIcon from "$lib/icons/Loader.svelte";
 
   let data = "";
 
   (async () => {
     try {
-      const res = await fetch("http://localhost:3000/goals");
+      const url = "https://goals-api.diogoqueiros.workers.dev/goals";
+      const res = await fetch(url/*"http://localhost:3000/goals"*/);
       const { goals } = await res.json();
       data = goals;
     } catch (error) {
