@@ -1,12 +1,13 @@
 <script lang="ts">
   import LoaderIcon from "$lib/icons/Loader.svelte";
 
+  const gif = "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3ZjZ3Y3b3FmdnE1bDNrZ3liYXczaXY2bGM0c2huaXY3MXdqcmNkYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/9Gja0BFKtLkW85iXPH/giphy.gif";
   let data = "";
 
   (async () => {
     try {
       const url = "https://goals-api.diogoqueiros.workers.dev/goals";
-      const res = await fetch(url/*"http://localhost:3000/goals"*/);
+      const res = await fetch(url);
       const { goals } = await res.json();
       data = goals;
     } catch (error) {
@@ -33,11 +34,17 @@
   }
 
   img {
-    margin-bottom: 20px;
+    width: 20vw;
+    margin-top: 30px;
+  }
+
+  .header {
+    font-size: 4vw;
+    font-weight: bold;
   }
   
   .number {
-    font-size: 20vw;
+    font-size: 16vw;
     font-weight: bold;
   }
 
@@ -48,15 +55,15 @@
 
   :global(.icon) {
     animation: spin 2s linear infinite;
-		
-	}
+  }
 </style>
 
 <main>
-  <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3ZjZ3Y3b3FmdnE1bDNrZ3liYXczaXY2bGM0c2huaXY3MXdqcmNkYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/9Gja0BFKtLkW85iXPH/giphy.gif" alt="CR7" />
+  <p class="header">Cristiano Ronaldo road to 1000 goals</p>
+  <img src={gif} alt="CR7" />
 
   {#if data}
-    <div class="number">{data}</div>
+    <p class="number">{data}</p>
   {:else}
     <LoaderIcon className="icon" width={200} height={200} />
   {/if}

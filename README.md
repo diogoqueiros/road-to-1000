@@ -1,3 +1,5 @@
+## [Live version](https://road-to-1000.pages.dev/)
+
 ## Prerequisites
 *You will need to have [Node.js](https://nodejs.org) installed.*
 
@@ -21,17 +23,18 @@ npm install
 npm run dev
 ```
 
-or start the server and open the app in a new browser tab
+Navigate to [localhost:5173](http://localhost:5173). You should see your app running. Edit a component file in `src`, save it, and reload the page to see your changes.
+
+Or start the server and open the app in a new browser tab
 
 ```bash
 npm run dev -- --open
 ```
 
-Navigate to [localhost:5173](http://localhost:5173). You should see your app running. Edit a component file in `src`, save it, and reload the page to see your changes.
 
 ## Building and running in production mode
 
-To create a production version of your app:
+To create a production version of the app:
 
 ```bash
 npm run build
