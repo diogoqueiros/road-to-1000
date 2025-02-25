@@ -37,7 +37,7 @@
   }
   
   .number {
-    font-size: 24vw;
+    font-size: 20vw;
     font-weight: bold;
   }
 
