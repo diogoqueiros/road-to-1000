@@ -3,9 +3,11 @@
   export let width = 24;
   export let height = 24;
   export let fill = "none";
+  export let testId = undefined;
 </script>
 
 <svg
+  data-testid={testId}
   class={className}
   width={width}
   height={height}

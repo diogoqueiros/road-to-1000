@@ -59,12 +59,12 @@
 </style>
 
 <main>
-  <p class="header">Cristiano Ronaldo road to 1000 goals</p>
-  <img src={gif} alt="CR7" />
+  <p data-testid="header" class="header">Cristiano Ronaldo road to 1000 goals</p>
+  <img data-testid="gif" src={gif} alt="CR7" />
 
   {#if data}
-    <p class="number">{data}</p>
+    <p data-testid="number" class="number">{data}</p>
   {:else}
-    <LoaderIcon className="icon" width={200} height={200} />
+    <LoaderIcon testId="loading" className="icon" width={200} height={200} />
   {/if}
 </main>
