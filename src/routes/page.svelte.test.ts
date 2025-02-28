@@ -17,7 +17,7 @@ describe("/+page.svelte", () => {
     vi.restoreAllMocks();
   });
 
-	it("renders header and gif", async () => {
+	it("renders header, gif and a loader when data is being retrieved", async () => {
 		const mockData = { goals: 924 };
 		(fetchGoals as vi.Mock).mockResolvedValue(mockData);
 		render(Page);
@@ -25,14 +25,6 @@ describe("/+page.svelte", () => {
 		expect(screen.getByText(headerText)).toBeInTheDocument();
 		expect(screen.getByText(headerText)).toHaveTextContent(headerText);
 		await waitFor(() => expect(screen.getByTestId("gif")).toBeInTheDocument());
-	});
-
-	it("shows a loader when data is being retrieved", async () => {
-		const mockData = { goals: 924 };
-		(fetchGoals as vi.Mock).mockResolvedValue(mockData);
-
-		render(Page);
-
 		await waitFor(() => expect(screen.getByTestId("loading")).toBeInTheDocument());
 		expect(fetchGoals).toHaveBeenCalledTimes(1);
 	});
@@ -45,5 +37,6 @@ describe("/+page.svelte", () => {
 		await waitFor(() => expect(screen.getByTestId("loading")).toBeInTheDocument());
 		await waitFor(() => expect(screen.getByTestId("number")).toBeInTheDocument());
 		await waitFor(() => expect(screen.queryByTestId("loading")).not.toBeInTheDocument());
+		expect(fetchGoals).toHaveBeenCalledTimes(1);
 	});
 });
