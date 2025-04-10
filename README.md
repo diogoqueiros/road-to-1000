@@ -1,3 +1,5 @@
+# Road to 1000
+
 ## [Live version](https://road-to-1000.pages.dev/)
 
 ## Prerequisites
@@ -30,7 +32,6 @@ Or start the server and open the app in a new browser tab
 ```bash
 npm run dev -- --open
 ```
-
 
 ## Building and running in production mode
 
